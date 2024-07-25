@@ -8,6 +8,7 @@ use App\Models\M_Customer;
 use Exception;
 use Illuminate\Http\Request;
 use Nette\Utils\Random;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class customerController extends Controller
 {
@@ -34,8 +35,9 @@ class customerController extends Controller
     {
         try {
             M_Customer::create($storeCustomerRequest->validated());
+            Alert::success('Berhasil', 'Menambahkan Customer');
         } catch (Exception $e) {
-            dd($e);
+            Alert::error('Gagal', 'Menambahkan Customer');
         }
 
         return redirect()->back();
@@ -45,8 +47,9 @@ class customerController extends Controller
     {
         try {
             $customer->update($updateCustomerRequest->validated());
+            Alert::success('Berhasil', 'Mengupdate data Customer');
         } catch (Exception $e) {
-            dd($e);
+            Alert::error('Gagal', 'Mengupadate data Customer');
         }
 
         return redirect()->back();
@@ -56,8 +59,9 @@ class customerController extends Controller
     {
         try {
             $customer->delete();
+            Alert::success('Berhasil', 'Menghapus Customer');
         } catch (Exception $e) {
-            dd($e);
+            Alert::error('Gagal', 'Menghapus Customer');
         }
 
         return redirect()->back();

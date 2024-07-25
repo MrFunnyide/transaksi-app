@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\T_Sales;
 use App\Models\T_Sales_Det;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class transactionController extends Controller
 {
@@ -57,6 +58,7 @@ class transactionController extends Controller
             T_Sales_Det::create($data);
         }
         $request->session()->forget('carts');
+        Alert::success('Berhasil', 'Menambahkan Transaksi');
 
         return to_route('dashboard');
     }

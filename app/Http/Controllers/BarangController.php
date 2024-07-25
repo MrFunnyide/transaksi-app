@@ -8,6 +8,7 @@ use App\Models\M_Barang;
 use Exception;
 use Illuminate\Http\Request;
 use Nette\Utils\Random;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BarangController extends Controller
 {
@@ -26,8 +27,9 @@ class BarangController extends Controller
     {
         try {
             M_Barang::create($storeBarangRequest->validated());
+            Alert::success('Berhasil', 'Menambah Barang');
         } catch (Exception $e) {
-            dd($e);
+            Alert::error('Gagal', 'Menambah Barang');
         }
 
         return redirect()->back();
@@ -37,8 +39,9 @@ class BarangController extends Controller
     {
         try {
             $barang->update($updateBarangRequest->validated());
+            Alert::success('Berhasil', 'Mengupdate data Barang');
         } catch (Exception $e) {
-            dd($e);
+            Alert::error('Gagal', 'Mengupadate data Barang');
         }
         return redirect()->back();
     }
@@ -47,8 +50,9 @@ class BarangController extends Controller
     {
         try {
             $barang->delete();
+            Alert::success('Berhasil', 'Menghapus Barang');
         } catch (Exception $e) {
-            dd($e);
+            Alert::error('Gagal', 'Menghapus Barang');
         }
         return redirect()->back();
     }

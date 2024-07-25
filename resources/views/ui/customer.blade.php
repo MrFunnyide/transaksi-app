@@ -70,7 +70,7 @@
                                         class="form form-horizontal">
                                         @csrf
                                         <div class="col-md-2">
-                                            <label for="kode-barang">Kode Barang</label>
+                                            <label for="kode-barang">Kode Customer</label>
                                         </div>
                                         <div class="col-md-10 form-group">
                                             <input type="text" id="kode-barang" class="form-control" name="kode"
